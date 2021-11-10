@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+</head>
+<body>
+    <h1>My books</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.id}">1</td>
+                    <td th::text=${book.title}>Titolo 1</td>
+                    <td th:text="${book.author}">Carlo</td>
+                    <td>
+                        <form th:action="@{/deleteBook/{id}(id=${book.id})}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h1>Add new book:</h1>
+        <form action="/addbook" method="post">
+            <div>
+                <input placeholder="Title" type="text" id="inputTitle" name="title">
+            </div>
+            <div>
+                <input placeholder="Author" type="text" id="InputAuthor" name="author">
+            </div>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

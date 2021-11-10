@@ -28,8 +28,9 @@ public class BookController {
 
     //@RequestMapping(value ="/addbook", method=RequestMethod.POST)
     @PostMapping("/addbook")
-    public String addBook(String title, String author){
-        Book book = new Book(title, author);
+    //public String addBook(String title, String author){
+    public String addBook(Book book){
+        //Book book = new Book(title, author);
         bookRepository.save(book);
         return "redirect:/books";
     }
